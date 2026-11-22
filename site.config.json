@@ -1,0 +1,48 @@
+{
+  "_readme": "Every value you will change later lives here. After editing, run: python3 build.py   Empty string means 'not set yet'.",
+
+  "onSaleDate": "January 19, 2027",
+  "formats": "Paperback and ebook.",
+
+  "preorder": {
+    "_note": "Leave url empty to show the 'Pre-order opens December 1' state. Paste the retailer link to turn the button on.",
+    "url": "",
+    "retailer": "Amazon",
+    "closedText": "Pre-order opens December 1"
+  },
+
+  "endorsement": {
+    "_note": "Leave quote empty to hide the whole section.",
+    "quote": "",
+    "attribution": "",
+    "attributionDetail": ""
+  },
+
+  "contactEmail": "",
+
+  "cover": {
+    "_note": "Put the final cover JPG in assets/source/ and point to it here. If the file is missing, a marked placeholder is shown.",
+    "path": "assets/source/escape-velocity-cover.jpg",
+    "alt": "Cover of Escape Velocity by Olawale Oladehin"
+  },
+
+  "logo": {
+    "_note": "Put the Stack logo SVG in assets/source/ and point to it here. If missing, a type-set placeholder of the Stack logo is shown.",
+    "path": "assets/source/frontier-four-press-stack.svg"
+  },
+
+  "fonts": {
+    "_note": "Names go first in the CSS font stack. To self-host, put .woff2 files in assets/source/fonts/ and list them in files.",
+    "display": "Iowan Old Style",
+    "displayFallback": "Palatino Linotype, Palatino, Book Antiqua, Georgia, serif",
+    "sans": "Avenir Next",
+    "sansFallback": "Futura, Century Gothic, Helvetica Neue, Arial, sans-serif",
+    "files": []
+  },
+
+  "siteUrl": "https://frontierfourpress.com",
+  "isbnPaperback": "979-8-9827142-0-6",
+  "isbnEbook": "979-8-9827142-2-0",
+  "copyright": "© 2027 Frontier Four Press LLC",
+  "authorSiteUrl": "https://www.olawaleoladehin.com"
+}

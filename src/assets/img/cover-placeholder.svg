@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <!-- PLACEHOLDER COVER. Replaced automatically when the final JPG is in assets/source/ (see site.config.json, cover.path). -->
+  <rect width="600" height="900" fill="#DF5555"/>
+  <g font-family="'Iowan Old Style', Palatino, Georgia, serif" fill="#FFFFFF">
+    <text x="548" y="74" font-size="22" text-anchor="end">Olawale Oladehin</text>
+    <text x="48" y="215" font-size="132">Escape</text>
+    <text x="552" y="335" font-size="132" font-style="italic" text-anchor="end">Velocity</text>
+    <text x="548" y="405" font-size="30" font-style="italic" text-anchor="end">A Novel About</text>
+    <text x="548" y="443" font-size="30" font-style="italic" text-anchor="end">Leading Through AI</text>
+  </g>
+  <rect x="64" y="510" width="472" height="320" fill="#FFFFFF"/>
+  <rect x="80" y="526" width="440" height="288" fill="none" stroke="#14110F" stroke-width="3" stroke-dasharray="12 8"/>
+  <g font-family="Menlo, Consolas, monospace" fill="#14110F" text-anchor="middle">
+    <text x="300" y="652" font-size="28" font-weight="bold">COVER PLACEHOLDER</text>
+    <text x="300" y="696" font-size="20">Final cover JPG to come</text>
+    <text x="300" y="726" font-size="20">from the designer</text>
+  </g>
+</svg>

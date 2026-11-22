@@ -1,0 +1,32 @@
+<!doctype html><meta charset="utf-8"><body>
+<!-- Accessibility probe. Copied into docs/ temporarily by tools/a11y.sh. Loads the page in an
+     iframe and writes results to body[data-r] as JSON. -->
+<iframe id=f src="./" style="width:360px;height:800px;border:0"></iframe>
+<script>
+function lin(c){c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4)}
+function lum([r,g,b]){return 0.2126*lin(r)+0.7152*lin(g)+0.0722*lin(b)}
+function rgb(s){const m=s.match(/[\d.]+/g);return m?m.map(Number):null}
+function ratio(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05)}
+f.onload=()=>{const d=f.contentDocument,w=f.contentWindow,out={contrast:{},issues:[]};
+ function bg(el){while(el){const c=rgb(w.getComputedStyle(el).backgroundColor);if(c&&(c.length<4||c[3]>0))return c.slice(0,3);el=el.parentElement}return [255,255,255]}
+ const walker=d.createTreeWalker(d.body,NodeFilter.SHOW_TEXT);let n;
+ while(n=walker.nextNode()){if(!n.textContent.trim())continue;const el=n.parentElement;
+  if(el.closest('.visually-hidden,svg'))continue;const cs=w.getComputedStyle(el);
+  const fg=rgb(cs.color).slice(0,3),b=bg(el),r=ratio(fg,b),px=parseFloat(cs.fontSize),bold=parseInt(cs.fontWeight)>=700;
+  const large=px>=24||(bold&&px>=18.66);const need=large?3:4.5;
+  const key=`rgb(${fg}) on rgb(${b}) | ${large?'large':'normal'} text`;
+  const e=out.contrast[key]||(out.contrast[key]={ratio:+r.toFixed(2),need,pass:r>=need,minPx:px,sample:n.textContent.trim().slice(0,40)});
+  e.minPx=Math.min(e.minPx,px);}
+ if(d.documentElement.lang!=='en')out.issues.push('lang missing');
+ d.querySelectorAll('img').forEach(i=>{if(!i.hasAttribute('alt'))out.issues.push('img without alt: '+i.src)});
+ d.querySelectorAll('a').forEach(a=>{if(!a.textContent.trim()&&!a.getAttribute('aria-label'))out.issues.push('link without name')});
+ const hs=[...d.querySelectorAll('h1,h2,h3,h4')].map(h=>+h.tagName[1]);out.headings=hs;
+ hs.forEach((h,i)=>{if(i&&h>hs[i-1]+1)out.issues.push('heading level skipped')});
+ if(d.querySelectorAll('h1').length!==1)out.issues.push('need exactly one h1');
+ if(!d.querySelector('main'))out.issues.push('no main landmark');
+ out.scrollWidth360=d.documentElement.scrollWidth;
+ out.tapTargets=[...d.querySelectorAll('a,.button')].map(a=>{const r=a.getBoundingClientRect();return [a.textContent.trim().slice(0,30),Math.round(r.width),Math.round(r.height)]});
+ out.scripts=d.querySelectorAll('script').length;
+ out.externalRequests=performance.getEntriesByType('resource').map(r=>r.name).filter(u=>!u.startsWith(location.origin)).concat(w.performance.getEntriesByType('resource').map(r=>r.name).filter(u=>!u.startsWith(location.origin)));
+ document.body.setAttribute('data-r',JSON.stringify(out));};
+</script>

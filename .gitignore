@@ -1,0 +1,12 @@
+# Scratch output from build.py (share card and favicon renders)
+build/
+.DS_Store
+# Designer print files are too large for the site repo; keep only web assets here.
+assets/source/**/*.pdf
+assets/source/**/*.ai
+assets/source/**/*.psd
+assets/source/**/*.tif
+assets/source/**/*.tiff
+assets/source/**/*.eps
+preview/
+.claude/
